@@ -10,7 +10,6 @@ public class Main {
         ArrayList<Foguete> foguetes = new ArrayList<>();
         ArrayList<Satelite> satelites = new ArrayList<>();
 
-        // ===== CADASTRAR FOGUETES =====
         System.out.print("Quantos foguetes deseja cadastrar? ");
         int qtdFoguetes = input.nextInt();
         input.nextLine();
@@ -32,7 +31,6 @@ public class Main {
             foguetes.add(new Foguete(nome, combustivel, carga));
         }
 
-        // ===== CADASTRAR SATÉLITES =====
         System.out.print("\nQuantos satélites deseja cadastrar? ");
         int qtdSatelites = input.nextInt();
         input.nextLine();

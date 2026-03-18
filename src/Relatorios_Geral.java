@@ -1,41 +1,42 @@
 import java.util.ArrayList;
-import java.util.Random;
 import java.util.Scanner;
 
-public static void enviarDados(
-        ArrayList<String> missoes,
-        ArrayList<Satelite> satelites,
-        int idMissao) {
+public class Relatorios_Geral {
 
-    Scanner input = new Scanner(System.in);
+    public static void enviardados(
+            ArrayList<String> missoes,
+            ArrayList<Satelite> satelites,
+            int idMissao) {
 
-    System.out.println("\nDigite os dados do satélite:");
+        Scanner input = new Scanner(System.in);
 
-    System.out.print("Temperatura: ");
-    double temperatura = input.nextDouble();
+        System.out.println("\nDigite os dados do satélite:");
 
-    System.out.print("Radiação: ");
-    double radiacao = input.nextDouble();
+        System.out.print("Temperatura: ");
+        double temperatura = input.nextDouble();
 
-    System.out.print("Posição orbital: ");
-    double posicao = input.nextDouble();
+        System.out.print("Radiação: ");
+        double radiacao = input.nextDouble();
 
-    for (String m : missoes) {
+        System.out.print("Posição orbital: ");
+        double posicao = input.nextDouble();
 
-        if (m.contains("ID: " + idMissao)) {
+        for (String m : missoes) {
 
-            for (Satelite s : satelites) {
+            if (m.contains("ID: " + idMissao)) {
 
-                if (m.contains(s.getNome())) {
+                for (Satelite s : satelites) {
 
-                    System.out.println("\n===== Dados do Satélite =====");
-                    System.out.println("Temperatura: " + temperatura + " °C");
-                    System.out.println("Radiação: " + radiacao + " RAD");
-                    System.out.println("Posição orbital: " + posicao + "°");
-                    System.out.println("==============================");
+                    if (m.contains(s.getNome())) {
+
+                        System.out.println("\n===== Dados do Satélite =====");
+                        System.out.println("Temperatura: " + temperatura + " °C");
+                        System.out.println("Radiação: " + radiacao + " RAD");
+                        System.out.println("Posição orbital: " + posicao + "°");
+                        System.out.println("==============================");
+                    }
                 }
             }
         }
     }
 }
-// aa

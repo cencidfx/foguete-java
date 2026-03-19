@@ -2,13 +2,13 @@ public class Foguete {
 
     private String nome;
     private float combustivel;
-    private float carga;
+    private float cargaMaxima;
     private String status;
 
-    public Foguete(String nome, float combustivel, float carga) {
+    public Foguete(String nome, float combustivel, float cargaMaxima) {
         this.nome = nome;
         this.combustivel = combustivel;
-        this.carga = carga;
+        this.cargaMaxima = cargaMaxima;
         this.status = "Pronto";
     }
 
@@ -17,31 +17,26 @@ public class Foguete {
     }
 
     public boolean lancar() {
-
-        if (combustivel >= 100) {
-            status = "Lançado";
-            System.out.println("Foguete " + nome + " lançado com sucesso!");
+        if (combustivel > 500) {
+            status = "Lançando";
+            combustivel -= 500;
+            status = "Em órbita";
             return true;
         } else {
             status = "Falha";
-            System.out.println("Foguete " + nome + " não tem combustível suficiente.");
             return false;
         }
-    }
-
-    @Override
-    public String toString() {
-        return "Foguete: " + nome +
-                "\nCombustível: " + combustivel +
-                "\nCarga: " + carga +
-                "\nStatus: " + status;
     }
 
     public String getNome() {
         return nome;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    @Override
+    public String toString() {
+        return "Foguete: " + nome +
+                " | Combustível: " + combustivel +
+                " | Carga: " + cargaMaxima +
+                " | Status: " + status;
     }
 }

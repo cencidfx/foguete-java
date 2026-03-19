@@ -1,70 +1,57 @@
 import java.util.ArrayList;
-import java.util.Scanner;
 
 public class Main {
 
     public static void main(String[] args) {
 
-        Scanner input = new Scanner(System.in);
-
         ArrayList<Foguete> foguetes = new ArrayList<>();
         ArrayList<Satelite> satelites = new ArrayList<>();
 
-        System.out.print("Quantos foguetes deseja cadastrar? ");
-        int qtdFoguetes = input.nextInt();
-        input.nextLine();
+        // ================= CRIANDO OBJETOS =================
+        Foguete foguete1 = new Foguete("Bolsonaro", 120f, 500f);
+        Foguete foguete2 = new Foguete("Lula", 40f, 300f);
 
-        for (int i = 0; i < qtdFoguetes; i++) {
+        Satelite satelite1 = new Satelite("Hubble", 200f, "LEO", 100f);
+        Satelite satelite2 = new Satelite("GPS", 150f, "MEO", 80f);
 
-            System.out.println("\nFoguete " + (i + 1));
+        foguetes.add(foguete1);
+        foguetes.add(foguete2);
 
-            System.out.print("Nome: ");
-            String nome = input.nextLine();
+        satelites.add(satelite1);
+        satelites.add(satelite2);
 
-            System.out.print("Combustível: ");
-            float combustivel = input.nextFloat();
+        // ================= RELATÓRIO INICIAL =================
+        System.out.println("===== RELATÓRIO INICIAL =====");
 
-            System.out.print("Carga: ");
-            float carga = input.nextFloat();
-            input.nextLine();
-
-            foguetes.add(new Foguete(nome, combustivel, carga));
-        }
-
-        System.out.print("\nQuantos satélites deseja cadastrar? ");
-        int qtdSatelites = input.nextInt();
-        input.nextLine();
-
-        for (int i = 0; i < qtdSatelites; i++) {
-
-            System.out.println("\nSatélite " + (i + 1));
-
-            System.out.print("Nome: ");
-            String nome = input.nextLine();
-
-            System.out.print("Massa: ");
-            float massa = input.nextFloat();
-            input.nextLine();
-
-            System.out.print("Órbita: ");
-            String orbita = input.nextLine();
-
-            System.out.print("Energia: ");
-            float energia = input.nextFloat();
-            input.nextLine();
-
-            satelites.add(new Satelite(nome, massa, orbita, energia));
-        }
-        
         for (Foguete f : foguetes) {
-            System.out.println("\n" + f);
-            f.lancar();
+            System.out.println(f);
         }
 
         for (Satelite s : satelites) {
-            System.out.println("\n" + s);
-            s.ativarPainel();
-            s.enviarDados("Teste de envio");
+            System.out.println(s);
+        }
+
+        // ================= LANÇAMENTO =================
+        System.out.println("\n===== LANÇAMENTO =====");
+
+        if (foguete1.lancar()) {
+            System.out.println("Satélite " + satelite1.getNome() + " foi enviado!");
+
+            satelite1.ativarPainel();
+            satelite1.enviarDados("Dados da missão");
+        } else {
+            System.out.println("Falha no lançamento!");
+        }
+
+        // ================= RELATÓRIO FINAL =================
+        System.out.println("\n===== RELATÓRIO FINAL =====");
+
+        for (Foguete f : foguetes) {
+            System.out.println(f);
+        }
+
+        for (Satelite s : satelites) {
+            System.out.println(s);
         }
     }
 }

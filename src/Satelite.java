@@ -4,52 +4,40 @@ public class Satelite {
     private float massa;
     private String orbita;
     private float energia;
-    private boolean ativo;
+    private String status;
 
     public Satelite(String nome, float massa, String orbita, float energia) {
         this.nome = nome;
         this.massa = massa;
         this.orbita = orbita;
         this.energia = energia;
-        this.ativo = true;
+        this.status = "Em solo";
     }
 
-    public boolean ativarPainel() {
-
-        energia -= 20;
-
-        if (energia <= 0) {
-            ativo = false;
-            System.out.println("Satélite " + nome + " ficou sem energia.");
-            return false;
-        }
-
-        System.out.println("Painéis solares ativados no satélite " + nome);
-        return true;
+    public void ativarPainel() {
+        energia += 20;
+        if (energia > 100) energia = 100;
+        status = "Ativo";
     }
 
     public void enviarDados(String mensagem) {
-
-        if (ativo) {
-            System.out.println("Satélite " + nome + " enviou: " + mensagem);
+        if (status.equals("Ativo")) {
+            System.out.println("Satélite " + nome + " enviando: " + mensagem);
         } else {
-            System.out.println("Satélite desligado.");
+            System.out.println("Satélite " + nome + " não está ativo.");
         }
+    }
+
+    public String getNome() {
+        return nome;
     }
 
     @Override
     public String toString() {
         return "Satélite: " + nome +
-                "\nMassa: " + massa +
-                "\nÓrbita: " + orbita +
-                "\nEnergia: " + energia;
-    }
-
-    public CharSequence getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
+                " | Massa: " + massa +
+                " | Órbita: " + orbita +
+                " | Energia: " + energia +
+                " | Status: " + status;
     }
 }

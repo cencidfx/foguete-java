@@ -1,42 +1,36 @@
 import java.util.ArrayList;
-import java.util.Scanner;
 
-public class Relatorios_Geral {
+public class CentroControle {
 
-    public static void enviardados(
-            ArrayList<String> missoes,
-            ArrayList<Satelite> satelites,
-            int idMissao) {
+    private ArrayList<Foguete> foguetes = new ArrayList<>();
+    private ArrayList<Satelite> satelites = new ArrayList<>();
 
-        Scanner input = new Scanner(System.in);
+    public void adicionarFoguete(Foguete f) {
+        foguetes.add(f);
+    }
 
-        System.out.println("\nDigite os dados do satélite:");
+    public void adicionarSatelite(Satelite s) {
+        satelites.add(s);
+    }
 
-        System.out.print("Temperatura: ");
-        double temperatura = input.nextDouble();
+    public void iniciarMissao(int iFoguete, int iSatelite) {
+        Foguete f = foguetes.get(iFoguete);
+        Satelite s = satelites.get(iSatelite);
 
-        System.out.print("Radiação: ");
-        double radiacao = input.nextDouble();
+        if (f.lancar()) {
+            s.ativarPainel();
+            s.enviarDados("Missão iniciada");
+        } else {
+            System.out.println("Falha no lançamento");
+        }
+    }
 
-        System.out.print("Posição orbital: ");
-        double posicao = input.nextDouble();
-
-        for (String m : missoes) {
-
-            if (m.contains("ID: " + idMissao)) {
-
-                for (Satelite s : satelites) {
-
-                    if (m.contains(s.getNome())) {
-
-                        System.out.println("\n===== Dados do Satélite =====");
-                        System.out.println("Temperatura: " + temperatura + " °C");
-                        System.out.println("Radiação: " + radiacao + " RAD");
-                        System.out.println("Posição orbital: " + posicao + "°");
-                        System.out.println("==============================");
-                    }
-                }
-            }
+    public void statusMissao() {
+        for (Foguete f : foguetes) {
+            System.out.println(f);
+        }
+        for (Satelite s : satelites) {
+            System.out.println(s);
         }
     }
 }

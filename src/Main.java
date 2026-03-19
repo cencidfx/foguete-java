@@ -10,7 +10,7 @@ public class Main {
         ArrayList<Foguete> foguetes = new ArrayList<>();
         ArrayList<Satelite> satelites = new ArrayList<>();
 
-        // ================= FOGUETES =================
+        // foguete
         System.out.print("Quantos foguetes deseja cadastrar? ");
         int qtdFoguetes = input.nextInt();
         input.nextLine();
@@ -32,7 +32,7 @@ public class Main {
             foguetes.add(new Foguete(nome, combustivel, carga));
         }
 
-        // ================= SATÉLITES =================
+        // satelite
         System.out.print("\nQuantos satélites deseja cadastrar? ");
         int qtdSatelites = input.nextInt();
         input.nextLine();
@@ -58,8 +58,8 @@ public class Main {
             satelites.add(new Satelite(nome, massa, orbita, energia));
         }
 
-        // ================= RELATÓRIO INICIAL =================
-        System.out.println("\n===== RELATÓRIO INICIAL =====");
+        // relatorio inicial
+        System.out.println("\nrelatorio inicial");
 
         for (Foguete f : foguetes) {
             System.out.println(f);
@@ -69,15 +69,15 @@ public class Main {
             System.out.println(s);
         }
 
-        // ================= LANÇAMENTO =================
-        System.out.println("\n===== LANÇAMENTO =====");
+        // lançamento
+        System.out.println("\nlançamento");
 
         if (!foguetes.isEmpty() && !satelites.isEmpty()) {
 
-            System.out.print("Escolha o número do foguete (1,2...): ");
+            System.out.print("Escolha o número do foguete (1): ");
             int iF = input.nextInt() - 1;
 
-            System.out.print("Escolha o número do satélite (1,2...): ");
+            System.out.print("Escolha o número do satélite (1): ");
             int iS = input.nextInt() - 1;
 
             Foguete f = foguetes.get(iF);
@@ -93,8 +93,8 @@ public class Main {
             }
         }
 
-        // ================= RELATÓRIO FINAL =================
-        System.out.println("\n===== RELATÓRIO FINAL =====");
+        // relatorio final
+        System.out.println("\nrelatorio final");
 
         for (Foguete f : foguetes) {
             System.out.println(f);
